@@ -2,7 +2,8 @@
   "type":"module",
   "scripts": {
     "compile": "tsc",
-    "start": "npm run compile && node ./dist/src/index.js"
+    "start_old": "npm run compile && node ./dist/src/index.js",
+    "start": "npm run compile && cd dist/src && node index.js"
   },
   "dependencies": {
     "@apollo/server": "^4.5.0",

@@ -1,15 +1,15 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone'
+import fs from 'fs';
+import resolvers from '../resolvers11.js';
 
-
-// A schema is a collection of type definitions that together define the "shape" of queries 
-
-const typeDefs = `  
+const typeDefs1 = `
   type Book { title: String author: String }  
   type Query { books: [Book] }
 `;
+const typeDefs2 = fs.readFileSync('../../schema12.graphql', { encoding: 'utf-8'});
+const resolvers2 = resolvers;
 
-// Resolvers tell Apollo Server how to fetch the data associated with a particular type
 const books = [
   {
     title: 'The Awakening',
@@ -21,18 +21,21 @@ const books = [
   },
 ];
 
-const resolvers = {
+const resolvers1 = {
   Query: { books: () => books, },
 };
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  typeDefs:typeDefs2,
+  resolvers:resolvers2,
 });
 
-// Passing an ApolloServer instance to the `startStandaloneServer` function:
-//  1. creates an Express app
-//  2. installs your ApolloServer instance as middleware
-//  3. prepares your app to handle incoming requests
-const { url } = await startStandaloneServer(server, { listen: { port: 3080 } });
-console.log(`Server listening at: ${url}`);
+// // APPROACH I
+// const { url } = await startStandaloneServer(server, { listen: { port: 3080 } });
+// console.log(`Server listening at: ${url}`);
+
+// APPROACH II
+const url23 = await startStandaloneServer(server, { listen: { port: 3080 } });
+// url23 ========> { url: 'http://localhost:3080/' }
+// console.log(url23);
+console.log(`Server listening at: ${url23.url}`);

@@ -8,3 +8,4 @@ const books = [
         author: 'Paul Auster',
     },
 ];
+export default books;

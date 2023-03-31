@@ -1,1 +1,5 @@
 /node_modules
+/dist
+
+# say by mistake if dist23 folder is already in git
+# git rm -r --cached dist23 ===========> to stop git from tracking
