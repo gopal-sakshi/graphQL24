@@ -1,13 +1,14 @@
 {
-  "type":"module",
+  "type": "module",
   "scripts": {
-    "compile": "tsc",
+    "compile": "rm -rf dist && tsc",
     "start_old": "npm run compile && node ./dist/src/index.js",
-    "start": "npm run compile && cd dist/src && node index.js"
+    "start": "npm run compile && node dist/src/index.js"
   },
   "dependencies": {
     "@apollo/server": "^4.5.0",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "notarealdb": "^0.2.2"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
