@@ -3,7 +3,8 @@
   "scripts": {
     "compile": "rm -rf dist && tsc",
     "start_old": "npm run compile && node ./dist/src/index.js",
-    "start": "npm run compile && node dist/src/index.js"
+    "start": "npm run compile && node dist/src/index.js",
+    "start_windows": "tsc && node dist/src/index.js"
   },
   "dependencies": {
     "@apollo/server": "^4.5.0",
